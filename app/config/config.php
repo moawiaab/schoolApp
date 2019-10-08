@@ -12,11 +12,6 @@ defined('SESSION_NAME')      ? null  : define('SESSION_NAME', '_ESTORE_SESSION')
 defined('SESSION_LIFE_TIME')      ? null  : define('SESSION_LIFE_TIME', 0);
 defined('SESSION_SAVE_PATH')      ? null  : define('SESSION_SAVE_PATH',  APP_PATH . DS . '..' . DS . 'session');
 
-defined('DATABASE_HOST_NAME')        ? null  : define('DATABASE_HOST_NAME', 'localhost');
-defined('DATABASE_USER_NAME')        ? null  : define('DATABASE_USER_NAME', 'root');
-defined('DATABASE_PASSWORD')         ? null  : define('DATABASE_PASSWORD', 'Moa_09195');
-defined('DATABASE_DB_NAME')          ? null  : define('DATABASE_DB_NAME', 'school_db');
-
 defined('APP_SLAT')      ? null  : define('APP_SLAT', '$2a$07$yeNCSNwRpYopOhv0TrrReP$');
 defined('CHAGE_FOR_PRIVILEGE')      ? null  : define('CHAGE_FOR_PRIVILEGE', 1);
 

@@ -9,11 +9,12 @@ use FR_MO\Lib\Authentination;
 
 
 
-defined("DS") ? null : define("DS",DIRECTORY_SEPARATOR);
+defined("DS") ? null : define("DS", DIRECTORY_SEPARATOR);
 
-require_once 'app' .DS . 'config' .DS. 'config.php';
-require_once APP_PATH .DS. 'lib' .DS.'autoload.php';
-$nameTemplate = require_once 'app' .DS . 'config' .DS. 'templateconfig.php';
+require_once 'app' . DS . 'config' . DS . 'config.php';
+require_once 'config.php';
+require_once APP_PATH . DS . 'lib' . DS . 'autoload.php';
+$nameTemplate = require_once 'app' . DS . 'config' . DS . 'templateconfig.php';
 
 $session = new SessionManager();
 $session->start();
@@ -26,7 +27,6 @@ $template = new Template($nameTemplate);
 $registry = Registry::getInstance();
 $registry->session = $session;
 $registry->messenger = $messenger;
-//var_dump($registry);
 
-$control = new MainController($template,$registry,$authentination);
+$control = new MainController($template, $registry, $authentination);
 $control->getInstance();

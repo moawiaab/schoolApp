@@ -8,7 +8,7 @@ class SessionManager extends \SessionHandler
     private $sessionSSL = false;
     private $sessionHTTPOnly = true;
     private $sessionPath = '/';
-    private $sessionDomain = '.school.app';
+    private $sessionDomain = DOMAIN_NAME;
     private $sessionSavePath = SESSION_SAVE_PATH;
     
     private $sessionCipherAlgo = 'AES-128-ECB';
