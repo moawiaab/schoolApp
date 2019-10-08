@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 05, 2019 at 11:58 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: Oct 08, 2019 at 11:34 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,20 +39,6 @@ CREATE TABLE `app_cashed` (
   `updatedBy` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `app_cashed`
---
-
-INSERT INTO `app_cashed` (`id`, `staId`, `date`, `amount`, `classId`, `detales`, `cearedBy`, `updatedBy`) VALUES
-(1, 3, '2018-10-01', '3200', 1, 'تم الاستلام', 1, 1),
-(2, 1, '2018-10-01', '230', 1, 'تم استلام المبلغ', 1, 1),
-(3, 1, '2018-10-01', '20', 1, 'تم الاستلام', 1, 1),
-(4, 2, '2018-10-02', '2536', 1, '', 1, 1),
-(5, 1, '2018-10-03', '235', 1, 'تم الاستلام', 1, 1),
-(6, 4, '2018-10-04', '2000', 1, 'تم استلام المبلغ', 1, 1),
-(7, 4, '2018-10-04', '1000', 1, 'تم الاستلام', 1, 1),
-(8, 11, '2018-10-04', '1000', 4, 'تم الاستلام', 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -66,6 +52,19 @@ CREATE TABLE `app_class` (
   `createdBy` int(10) UNSIGNED NOT NULL,
   `updatedBy` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `app_class_cors`
+--
+
+CREATE TABLE `app_class_cors` (
+  `id` int(11) NOT NULL,
+  `classId` int(11) NOT NULL,
+  `corsId` int(11) NOT NULL,
+  `tachId` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -172,7 +171,7 @@ CREATE TABLE `app_users` (
   `SubscriptionDate` date NOT NULL,
   `lastLogin` datetime NOT NULL,
   `GroupId` tinyint(1) UNSIGNED NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `online` varchar(3) DEFAULT 'no',
   `tage` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -182,7 +181,7 @@ CREATE TABLE `app_users` (
 --
 
 INSERT INTO `app_users` (`UserId`, `Username`, `Password`, `Email`, `PhoneNumber`, `SubscriptionDate`, `lastLogin`, `GroupId`, `status`, `online`, `tage`) VALUES
-(1, 'school', '$2a$07$yeNCSNwRpYopOhv0TrrReOldjhVQ2hPw9q1PL.wuNqUBINHNmgIWS', 'admin@gmail.com', '0910000000', '2019-10-05', '2019-10-05 11:25:04', 2, 1, 'no', NULL);
+(1, 'school', '$2a$07$yeNCSNwRpYopOhv0TrrReOldjhVQ2hPw9q1PL.wuNqUBINHNmgIWS', 'admin@gmail.com', '0910000000', '2019-10-05', '2019-10-08 10:37:04', 2, 1, 'no', NULL);
 
 -- --------------------------------------------------------
 
@@ -372,6 +371,15 @@ ALTER TABLE `app_class`
   ADD KEY `updatedBy` (`updatedBy`);
 
 --
+-- Indexes for table `app_class_cors`
+--
+ALTER TABLE `app_class_cors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `classId` (`classId`),
+  ADD KEY `corsId` (`corsId`),
+  ADD KEY `tachId` (`tachId`);
+
+--
 -- Indexes for table `app_cors`
 --
 ALTER TABLE `app_cors`
@@ -453,19 +461,25 @@ ALTER TABLE `app_user_privileges`
 -- AUTO_INCREMENT for table `app_cashed`
 --
 ALTER TABLE `app_cashed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `app_class`
 --
 ALTER TABLE `app_class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `app_class_cors`
+--
+ALTER TABLE `app_class_cors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `app_cors`
 --
 ALTER TABLE `app_cors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `app_fahter`
@@ -489,7 +503,7 @@ ALTER TABLE `app_staudan`
 -- AUTO_INCREMENT for table `app_teatcher`
 --
 ALTER TABLE `app_teatcher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `app_users`
@@ -501,13 +515,13 @@ ALTER TABLE `app_users`
 -- AUTO_INCREMENT for table `app_users_groups`
 --
 ALTER TABLE `app_users_groups`
-  MODIFY `GroupId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `GroupId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `app_user_groups_privileges`
 --
 ALTER TABLE `app_user_groups_privileges`
-  MODIFY `Id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `Id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `app_user_privileges`
