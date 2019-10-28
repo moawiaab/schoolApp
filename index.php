@@ -7,7 +7,7 @@ use FR_MO\Lib\SessionManager;
 use FR_MO\Lib\Messenger;
 use FR_MO\Lib\Authentination;
 
-
+//echo 
 
 defined("DS") ? null : define("DS", DIRECTORY_SEPARATOR);
 
@@ -30,3 +30,5 @@ $registry->messenger = $messenger;
 
 $control = new MainController($template, $registry, $authentination);
 $control->getInstance();
+
+
